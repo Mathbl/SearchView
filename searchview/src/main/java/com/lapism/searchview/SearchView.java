@@ -30,6 +30,7 @@ import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.List;
@@ -53,6 +54,7 @@ public class SearchView extends FrameLayout implements Filter.FilterListener {
     private CardView mCardView;
     private EditText mSearchEditText;
     private ImageView mBackImageView;
+    private ProgressBar mProgressBar;
     private ImageView mVoiceImageView;
     private ImageView mEmptyImageView;
     private View mTintView;
@@ -108,6 +110,8 @@ public class SearchView extends FrameLayout implements Filter.FilterListener {
         mSearchEditText.setOnClickListener(mOnClickListener);
         mBackImageView = (ImageView) findViewById(R.id.imageView_arrow_back);
         mBackImageView.setOnClickListener(mOnClickListener);
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+        mProgressBar.setVisibility(View.GONE);
         mVoiceImageView = (ImageView) findViewById(R.id.imageView_mic);
         mVoiceImageView.setOnClickListener(mOnClickListener);
         mEmptyImageView = (ImageView) findViewById(R.id.imageView_clear);
@@ -280,6 +284,14 @@ public class SearchView extends FrameLayout implements Filter.FilterListener {
     }
 
     /* Need update ********************************************************************************/
+
+    public void showLoading() {
+        mProgressBar.setVisibility(VISIBLE);
+    }
+
+    public void hideLoading() {
+        mProgressBar.setVisibility(GONE);
+    }
 
     public void setVoiceSearch(boolean voiceSearch) {
         allowVoiceSearch = voiceSearch;

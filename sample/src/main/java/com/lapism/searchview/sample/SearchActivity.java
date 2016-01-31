@@ -75,6 +75,10 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                if (newText != null && newText.length() > 0) {
+                    mSearchView.showLoading();
+                    return true;
+                }
                 return false;
             }
         });
